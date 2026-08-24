@@ -315,4 +315,3 @@ export function useI18n() {
   }
   return context;
 }
-import { useState } from 'react';
