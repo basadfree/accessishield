@@ -5,7 +5,7 @@ import { useI18n } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 
 export function Header() {
-  const { t, lang, setLang } = useI18n();
+  const { t } = useI18n();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-dark-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
@@ -36,33 +36,6 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex sm:items-center sm:gap-2">
-              <button
-                onClick={() => setLang('he')}
-                className={cn(
-                  'px-3 py-1.5 rounded-lg text-sm font-medium transition-all',
-                  lang === 'he'
-                    ? 'bg-primary-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800'
-                )}
-                aria-pressed={lang === 'he'}
-              >
-                עברית
-              </button>
-              <button
-                onClick={() => setLang('en')}
-                className={cn(
-                  'px-3 py-1.5 rounded-lg text-sm font-medium transition-all',
-                  lang === 'en'
-                    ? 'bg-primary-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800'
-                )}
-                aria-pressed={lang === 'en'}
-              >
-                English
-              </button>
-            </div>
-
             <Link
               href="#scanner"
               className="hidden sm:inline-flex btn-primary"

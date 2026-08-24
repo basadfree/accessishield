@@ -272,57 +272,34 @@ export function getTranslation(lang: Language, key: string): string {
   return value || key;
 }
 
-export function useTranslation() {
+export const I18nContext = createContext<{
+  lang: Language;
+  t: (key: string) => string;
+} | null>(null);
+
+export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>('en');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('lang') as Language | null;
-    if (saved) {
-      setLang(saved);
-    } else {
-      const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
-      setLang(browserLang);
-    }
+    const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
+    setLang(browserLang);
   }, []);
 
   const t = (key: string) => getTranslation(lang, key);
 
-  return { t, lang, setLang, mounted };
-}
-
-export const I18nContext = createContext<{
-  lang: Language;
-  setLang: (lang: Language) => void;
-  t: (key: string) => string;
-} | null>(null);
-
-export function I18nProvider({ children, defaultLang = 'en' }: { children: ReactNode; defaultLang?: Language }) {
-  const [lang, setLang] = useState<Language>(defaultLang);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem('lang') as Language | null;
-    if (saved) {
-      setLang(saved);
-    } else {
-      const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
-      setLang(browserLang);
-      localStorage.setItem('lang', browserLang);
-    }
-  }, []);
-
-  const setLangPersist = (newLang: Language) => {
-    setLang(newLang);
-    localStorage.setItem('lang', newLang);
-  };
-
-  const t = (key: string) => getTranslation(lang, key);
+  if (!mounted) {
+    // During SSR: always use 'en' to match static generation
+    return (
+      <I18nContext.Provider value={{ lang: 'en', t: (key: string) => getTranslation('en', key) }}>
+        {children}
+      </I18nContext.Provider>
+    );
+  }
 
   return (
-    <I18nContext.Provider value={{ lang, setLang: setLangPersist, t }}>
+    <I18nContext.Provider value={{ lang, t }}>
       {children}
     </I18nContext.Provider>
   );
@@ -333,9 +310,9 @@ export function useI18n() {
   if (!context) {
     return {
       lang: 'en' as Language,
-      setLang: () => {},
-      t: (key: string) => key,
+      t: (key: string) => getTranslation('en', key),
     };
   }
   return context;
 }
+import { useState } from 'react';
