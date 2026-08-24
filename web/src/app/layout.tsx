@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Assistant } from 'next/font/google';
 import './globals.css';
 import { I18nProvider } from '@/lib/i18n';
+import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { HtmlAttributes } from '@/components/HtmlAttributes';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const assistant = Assistant({ subsets: ['hebrew'], variable: '--font-assistant', display: 'swap' });
@@ -69,7 +69,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://unpkg.com" />
       </head>
       <body className={`${inter.variable} ${assistant.variable} antialiased`}>
-        <HtmlAttributes />
         <I18nProvider>
           <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 btn-primary">
             Skip to main content

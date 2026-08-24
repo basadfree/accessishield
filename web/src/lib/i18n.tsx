@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode, Fragment } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 export type Language = 'he' | 'en';
 
@@ -307,9 +307,7 @@ export function I18nProvider({ children, defaultLang = 'en' }: { children: React
 
   return (
     <I18nContext.Provider value={{ lang, setLang, t }}>
-      <div dir={lang === 'he' ? 'rtl' : 'ltr'} lang={lang} suppressHydrationWarning>
-        {children}
-      </div>
+      {children}
     </I18nContext.Provider>
   );
 }
@@ -317,7 +315,6 @@ export function I18nProvider({ children, defaultLang = 'en' }: { children: React
 export function useI18n() {
   const context = useContext(I18nContext);
   if (!context) {
-    // During SSR/static generation, return a default context
     return {
       lang: 'en' as Language,
       setLang: () => {},
