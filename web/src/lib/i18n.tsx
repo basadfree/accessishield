@@ -307,9 +307,9 @@ export function I18nProvider({ children, defaultLang = 'en' }: { children: React
 
   return (
     <I18nContext.Provider value={{ lang, setLang, t }}>
-      <html dir={lang === 'he' ? 'rtl' : 'ltr'} lang={lang} suppressHydrationWarning>
+      <div dir={lang === 'he' ? 'rtl' : 'ltr'} lang={lang} suppressHydrationWarning>
         {children}
-      </html>
+      </div>
     </I18nContext.Provider>
   );
 }
