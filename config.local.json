@@ -1,0 +1,59 @@
+{
+  "project": {
+    "name": "AccessiShield",
+    "version": "1.0.0",
+    "description": "Automated accessibility lead generation & fix platform"
+  },
+  "contact": {
+    "email": "accessibility@yourdomain.com",
+    "phone": "+972-XX-XXXXXXX"
+  },
+  "payment": {
+    "amount_ils": 200,
+    "amount_usd": 55,
+    "currency": "ILS",
+    "paypal": {
+      "client_id": "",
+      "client_secret": "",
+      "webhook_id": "",
+      "mode": "sandbox"
+    }
+  },
+  "thresholds": {
+    "min_violations_for_pitch": 1,
+    "max_sites_per_batch": 50,
+    "scan_timeout_ms": 30000,
+    "form_fill_timeout_ms": 15000
+  },
+  "search": {
+    "queries_he": [
+      "מספרה בתל אביב",
+      "מסעדה בירושלים",
+      "עורך דין בחיפה",
+      "רואה חשבון בבאר שבע",
+      "חנות בגדים בתל אביב",
+      "קוסמטיקאית ברמת גן",
+      "מוסך בפתח תקווה",
+      "בית קפה בחולון"
+    ],
+    "queries_en": [
+      "hair salon tel aviv",
+      "restaurant jerusalem",
+      "lawyer haifa",
+      "accountant beer sheva",
+      "clothing store tel aviv",
+      "beauty salon ramat gan",
+      "mechanic petah tikva",
+      "cafe holon"
+    ],
+    "max_results_per_query": 20
+  },
+  "supabase": {
+    "url": "https://soyzlcudcwmgyoalfcjq.supabase.co",
+    "anon_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNveXpsY3VkY3dtZ3lvYWxmY2pxIiwicm9sZSI6ImFub25pIiwiaWF0IjoxNzg3NDkyNjAxLCJleHAiOjIxMDMwNjg2MDF9.-DYomu3xYM4OXsSUOuWb4qTCm1HAZOruq8WzjMLrSnE",
+    "service_role_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNveXpsY3VkY3dtZ3lvYWxmY2pxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NzQ5MjYwMSwiZXhwIjoyMTAzMDY4NjAxfQ.qu9vsbMCv86P32BuvLYwPoYmsRYYqfwGUAauXjFsQmw"
+  },
+  "vercel": {
+    "project_name": "accessishield"
+  }
+}

@@ -1,0 +1,9 @@
+# AccessiShield - Python Automation Requirements
+playwright==1.44.0
+supabase==2.3.4
+python-dotenv==1.0.1
+pydantic==2.7.1
+httpx>=0.24,<0.26
+tenacity==8.2.3
+rich==13.7.1
+fpdf2==2.7.6
