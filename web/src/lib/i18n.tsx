@@ -53,7 +53,7 @@ export const translations = {
     },
     pricing: {
       title: 'תמחור פשוט ושקוף',
-      subtitle: 'ללא מנויים, ללא הפתעות. תשלום חד פעמי לדוח מלא + תיקון.',
+      subtitle: 'לכלול מנויים, ללא הפתעות. תשלום חד פעמי לדוח מלא + תיקון.',
       plan: {
         name: 'דוח נגישות מלא',
         price: '200',
@@ -289,15 +289,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const t = (key: string) => getTranslation(lang, key);
 
-  if (!mounted) {
-    // During SSR: always use 'en' to match static generation
-    return (
-      <I18nContext.Provider value={{ lang: 'en', t: (key: string) => getTranslation('en', key) }}>
-        {children}
-      </I18nContext.Provider>
-    );
-  }
-
+  // Always render the same provider structure - no conditional rendering
+  // During SSR, mounted=false, lang='en', but provider structure is same
   return (
     <I18nContext.Provider value={{ lang, t }}>
       {children}
