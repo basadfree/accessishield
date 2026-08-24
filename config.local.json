@@ -13,9 +13,9 @@
     "amount_usd": 55,
     "currency": "ILS",
     "paypal": {
-      "client_id": "",
-      "client_secret": "",
-      "webhook_id": "",
+      "client_id": "BAAyPaDqlDWxeyucAP2vhwmW4MIUurTsWC3GOxQugrbGeWGl2ApoDntpUcmAXuWaSnNcFok4nrC6aAKfnc",
+      "client_secret": "EKuTfVbsgy3uhv0GMJGGwMGaKBTGGvCeN1keDbr2nJ1xAKWX3m6MEpxAgVqxprCkDRJfrcazr8ED6oMT",
+      "webhook_id": "0RT01092W72887351",
       "mode": "sandbox"
     }
   },
