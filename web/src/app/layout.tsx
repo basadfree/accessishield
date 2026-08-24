@@ -4,6 +4,7 @@ import './globals.css';
 import { I18nProvider } from '@/lib/i18n';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { ClientWrapper } from '@/components/ClientWrapper';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const assistant = Assistant({ subsets: ['hebrew'], variable: '--font-assistant', display: 'swap' });
@@ -69,16 +70,18 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://unpkg.com" />
       </head>
       <body className={`${inter.variable} ${assistant.variable} antialiased`}>
-        <I18nProvider>
-          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 btn-primary">
-            Skip to main content
-          </a>
-          <Header />
-          <main id="main-content" className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-        </I18nProvider>
+        <ClientWrapper fallback={<>Loading...</>}>
+          <I18nProvider>
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 btn-primary">
+              Skip to main content
+            </a>
+            <Header />
+            <main id="main-content" className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </I18nProvider>
+        </ClientWrapper>
       </body>
     </html>
   );

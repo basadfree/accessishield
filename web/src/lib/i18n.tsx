@@ -1,5 +1,3 @@
-'use client';
-
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 export type Language = 'he' | 'en';
@@ -53,7 +51,7 @@ export const translations = {
     },
     pricing: {
       title: 'תמחור פשוט ושקוף',
-      subtitle: 'לכלול מנויים, ללא הפתעות. תשלום חד פעמי לדוח מלא + תיקון.',
+      subtitle: 'ללא מנויים, ללא הפתעות. תשלום חד פעמי לדוח מלא + תיקון.',
       plan: {
         name: 'דוח נגישות מלא',
         price: '200',
@@ -289,8 +287,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const t = (key: string) => getTranslation(lang, key);
 
-  // Always render the same provider structure - no conditional rendering
-  // During SSR, mounted=false, lang='en', but provider structure is same
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <I18nContext.Provider value={{ lang, t }}>
       {children}
