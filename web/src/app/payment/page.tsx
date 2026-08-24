@@ -153,8 +153,8 @@ export default function PaymentPage() {
 
           <p className="text-center text-xs text-gray-500 dark:text-gray-400">
             {lang === 'he' 
-              ? 'מאובטח על ידי PayPal • ללא שמירת פרטי כרטיס • החזר מלא תוך 30 יום אם לא תוקן'
-              : 'Secured by PayPal • No card details stored • Full refund within 30 days if not fixed'
+              ? 'מאובטח על ידי PayPal • ללא שמירת פרטי כרטיס • סקירות חינם 3 חודשים'
+              : 'Secured by PayPal • No card details stored • Free re-scans for 3 months'
             }
           </p>
         </div>

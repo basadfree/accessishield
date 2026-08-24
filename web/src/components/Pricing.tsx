@@ -76,7 +76,7 @@ export function Pricing() {
 
               <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
                 <RotateCcw className="h-4 w-4 inline-block mr-1" aria-hidden="true" />
-                {lang === 'he' ? 'אחריות 30 יום - החזר מלא אם לא תוקן' : '30-day guarantee - full refund if not fixed'}
+                {lang === 'he' ? 'סקירות נוספות חינם למשך 3 חודשים' : 'Free re-scans for 3 months'}
               </p>
             </div>
           </div>

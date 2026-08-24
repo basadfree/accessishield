@@ -278,8 +278,13 @@ export function useTranslation() {
 
   useEffect(() => {
     setMounted(true);
-    const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
-    setLang(browserLang);
+    const saved = localStorage.getItem('lang') as Language | null;
+    if (saved) {
+      setLang(saved);
+    } else {
+      const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
+      setLang(browserLang);
+    }
   }, []);
 
   const t = (key: string) => getTranslation(lang, key);
@@ -299,14 +304,25 @@ export function I18nProvider({ children, defaultLang = 'en' }: { children: React
 
   useEffect(() => {
     setMounted(true);
-    const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
-    setLang(browserLang);
+    const saved = localStorage.getItem('lang') as Language | null;
+    if (saved) {
+      setLang(saved);
+    } else {
+      const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
+      setLang(browserLang);
+      localStorage.setItem('lang', browserLang);
+    }
   }, []);
+
+  const setLangPersist = (newLang: Language) => {
+    setLang(newLang);
+    localStorage.setItem('lang', newLang);
+  };
 
   const t = (key: string) => getTranslation(lang, key);
 
   return (
-    <I18nContext.Provider value={{ lang, setLang, t }}>
+    <I18nContext.Provider value={{ lang, setLang: setLangPersist, t }}>
       {children}
     </I18nContext.Provider>
   );
