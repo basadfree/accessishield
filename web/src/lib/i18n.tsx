@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 export type Language = 'he' | 'en';
@@ -277,19 +279,13 @@ export const I18nContext = createContext<{
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>('en');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const browserLang = navigator.language.startsWith('he') ? 'he' : 'en';
     setLang(browserLang);
   }, []);
 
   const t = (key: string) => getTranslation(lang, key);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <I18nContext.Provider value={{ lang, t }}>
